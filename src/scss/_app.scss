@@ -1,0 +1,44 @@
+@import 'https://9d0dd7a648345f19af83-877d2ecaf11b88d5e17327c758e17ef6.ssl.cf2.rackcdn.com/museo-sans-1.0.1/css/museo-sans.css';
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+    font-family:'MuseoSans', sans-serif;
+    background-color: $light-grey;
+    color: $dark-grey;
+    font-size: 1.6rem;
+}
+
+h3 {
+    font-weight: 600;
+    margin: 0;
+}
+
+p {
+    margin: 1rem 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 4rem);
+    margin: 2rem;
+}
+
+.btn {
+    background: no-repeat;
+    border-radius: 0.4rem;
+    border: 0.1rem solid;
+    cursor: pointer;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    border-color: $dark-grey;
+}
