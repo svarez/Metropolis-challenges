@@ -98,10 +98,12 @@ const getInitials = (fullName: String) => {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);   
     position: fixed;
     z-index: 1;
+
     @media screen and (max-width: 30em) {
         left: 50%;
         transform: translate(-50%);
     }
+
     .profile-img {
         position: absolute;
         right: 1.6rem;
@@ -112,6 +114,7 @@ const getInitials = (fullName: String) => {
         max-height: 5.6rem;
         border-radius: 100%;
     }
+
     .initials {
         position: absolute;
         right: 1.6rem;
@@ -127,14 +130,18 @@ const getInitials = (fullName: String) => {
         font-size: 1.8rem;
         color: $blue
     }
+
     .role {
         font-size: 1.3rem;
     }
+
     .counts {
         font-size: 1.3rem;
         padding-right: 5rem;
+
         span {
             margin-right: 1rem;
+
             b {
                 color: $blue;
                 font-weight: bold;
@@ -143,6 +150,7 @@ const getInitials = (fullName: String) => {
     }
     .view-profile {
         text-align: right;
+
         a {
             text-transform: uppercase;
             text-decoration: none;
@@ -150,6 +158,7 @@ const getInitials = (fullName: String) => {
             font-weight: 400;
             font-size: 1.1rem;
             line-height: 1.7rem;
+            
             img {
                 vertical-align: middle;
             }

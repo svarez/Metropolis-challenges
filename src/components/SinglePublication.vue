@@ -82,11 +82,13 @@ const selectedAuthor = ref<null | number>(null)
     padding: 2.4rem 3.2rem 3.2rem;
     gap: .8rem;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
     h3 {
         font-size: 2rem;
         line-height: 2.8rem;
         margin: 0
     }
+
     h4 {
         color: $grey;
         font-weight: 300;
@@ -94,9 +96,11 @@ const selectedAuthor = ref<null | number>(null)
         line-height: 2.1rem;
         margin: 0;
     }
+
     h5 {
       margin: 0
     }
+    
     .no-margin {
       margin: 0;
     }
