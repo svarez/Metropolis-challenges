@@ -6,9 +6,9 @@ import ExerciseTwo from '@/pages/ExerciseTwo.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', component: Home },
-    { path: '/exercise-one', component: ExerciseOne },
-    { path: '/exercise-two', component: ExerciseTwo }
+    { path: '/Metropolis-challenges/', component: Home },
+    { path: '/Metropolis-challenges/exercise-one', component: ExerciseOne },
+    { path: '/Metropolis-challenges/exercise-two', component: ExerciseTwo }
   ]
 })
 
