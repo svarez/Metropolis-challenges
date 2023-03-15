@@ -17,7 +17,7 @@
           <img 
             v-if="item.children" 
             class="item-icon arrow"
-            :class="{ 'arrow-up' : item.isExpanded }" src="@/assets/images/arrow.svg" 
+            :class="{ 'arrow-up' : item.isExpanded }" :src="arrowImage" 
           />
         </div>
         <Menu 
@@ -33,6 +33,7 @@
   
 <script setup lang="ts">
 import { MenuItem } from '@/interfaces/MenuItem'
+import arrowImage from '@/assets/images/arrow.svg'
 import('@/scss/menu.scss')
 
 const props = defineProps<{

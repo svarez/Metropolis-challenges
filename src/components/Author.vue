@@ -33,7 +33,7 @@
             </p>
             <p class="view-profile">
                 <a :href="author.profileUrl" target="_blank" >
-                    <img src="@/assets/images/view-profile.svg" /> View profile
+                    <img :src="viewProfileImage" /> View profile
                 </a>
             </p>
         </div>
@@ -43,6 +43,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { Author } from '@/interfaces/Author'
+import viewProfileImage from '@/assets/images/view-profile.svg'
 const emit = defineEmits(['select-author'])
 
 const props = defineProps<{

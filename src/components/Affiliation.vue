@@ -6,7 +6,7 @@
         Affiliation 
         <img 
             class="arrow"
-            :class="{ 'arrow-up' : showAffiliationsList }" src="@/assets/images/arrow.svg" 
+            :class="{ 'arrow-up' : showAffiliationsList }" :src="arrowImage" 
         />
     </p>
     <transition name="fade">
@@ -27,6 +27,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Affiliation } from '@/interfaces/Affiliation'
+import arrowImage from '@/assets/images/arrow.svg'
 
 const props = defineProps<{
     affiliations: Affiliation[]
