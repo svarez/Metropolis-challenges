@@ -1,0 +1,1 @@
+.main-nav{position:fixed;top:0;left:0;width:100%}.menu{margin:2rem;padding:0}.menu.level-1{position:absolute}.menu ul{margin:0;padding:0;display:flex}.menu ul li{list-style:none;margin:0 2rem;cursor:pointer}.menu ul li .item-icon{margin-left:1rem}.menu ul li .menu>ul{flex-direction:column}.arrow{transition:transform .2s}.arrow.arrow-up{transform:rotate(-180deg)}
