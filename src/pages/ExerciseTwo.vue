@@ -12,11 +12,13 @@
 import { ref, onMounted } from 'vue'
 import Menu from '@/components/Menu.vue'
 import { MenuItem } from '@/interfaces/MenuItem'
+import { useRoute } from "vue-router";
+import MainMenu from '@/assets/json/main-menu.json'
 
 const menuItems = ref<MenuItem[]>([])
+const route =useRoute()
 
 onMounted(async () => {
-    const response = await fetch('./src/assets/json/menu.json')
-    menuItems.value = (await response.json()) as MenuItem[]
+    menuItems.value = MainMenu as MenuItem[]
 })
 </script>
