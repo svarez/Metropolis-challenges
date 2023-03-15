@@ -1,0 +1,46 @@
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.menu {
+    margin: 2rem;
+    padding: 0;
+
+    &.level-1 {
+        position: absolute;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+
+        li {
+            list-style: none;
+            margin: 0 2rem;
+            cursor: pointer;
+            
+            .item-icon {
+                margin-left: 1rem;
+            }
+
+            .menu {
+
+                &>ul {
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}
+
+.arrow {
+    transition: transform .2s;
+    
+    &.arrow-up {
+        transform: rotate(-180deg);
+    }
+}

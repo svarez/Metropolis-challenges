@@ -15,7 +15,7 @@ import PublicationsService from '@/services/publications/LocalRepository'
 import SinglePublication from '../components/SinglePublication.vue'
 import LogoAnimation from '../components/LogoAnimation.vue'
 
-const idPublication = ref('1234')
+const idPublication = ref<string>('abcde1234')
 const publication = ref<Publication>({})
 
 onMounted(async () => {

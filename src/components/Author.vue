@@ -68,10 +68,10 @@ const openModal = () => {
 }
 
 const getInitials = (fullName: String) => {
-    const names = fullName.split(' ');
-    const firstInitial = names[0].charAt(0);
-    const lastInitial = names[names.length - 1].charAt(0);
-    return `${firstInitial}${lastInitial}`;
+    const names = fullName.split(' ')
+    const firstInitial = names[0].charAt(0)
+    const lastInitial = names[names.length - 1].charAt(0)
+    return `${firstInitial}${lastInitial}`
 }
 
 
