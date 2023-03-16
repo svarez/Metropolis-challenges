@@ -1,72 +1,59 @@
 <template>
-    <div
-        class="position-relative"
-    >
-        <span 
-            class="name"
-            @click="openModal"
-        >
-            {{ author.fullName }}
-        </span><sup>{{ totalAffiliations }}</sup>
-        <div
-            v-if="showModal"
-            class="box"
-        >
-            <h3>{{ author.fullName }}</h3>
-            <img 
-                v-if="!showInitials" 
-                class="profile-img" 
-                :src="author.pictureUrl" 
-                @error="showInitials = true" 
-            />
-            <div
-                v-if="showInitials" 
-                class="initials"
+    <Popper>
+        <div>
+            <span
+                class="name"
             >
-                {{ initialsOfFullname }}
-            </div>
-            <p class="role">{{ author.role }}</p>
-            <p class="counts">
-                <span><b>{{ author.publications.toLocaleString('us-US') }}</b> Publictions</span> 
-                <span><b>{{ author.views.toLocaleString('us-US') }}</b> Views</span> 
-                <span><b>{{ author.followers.toLocaleString('us-US') }}</b> Followers</span>
-            </p>
-            <p class="view-profile">
-                <a :href="author.profileUrl" target="_blank" >
-                    <img :src="viewProfileImage" /> View profile
-                </a>
-            </p>
+                {{ author.fullName }}
+            </span> 
+            <sup>
+                {{ totalAffiliations }}
+            </sup>
         </div>
-    </div>
+        <template #content>
+            <div class="box">
+                <h3>{{ author.fullName }}</h3>
+                <img 
+                    v-if="!showInitials" 
+                    class="profile-img" 
+                    :src="author.pictureUrl" 
+                    @error="showInitials = true" 
+                />
+                <div
+                    v-if="showInitials" 
+                    class="initials"
+                >
+                    {{ initialsOfFullname }}
+                </div>
+                <p class="role">{{ author.role }}</p>
+                <p class="counts">
+                    <span><b>{{ author.publications.toLocaleString('us-US') }}</b> Publictions</span> 
+                    <span><b>{{ author.views.toLocaleString('us-US') }}</b> Views</span> 
+                    <span><b>{{ author.followers.toLocaleString('us-US') }}</b> Followers</span>
+                </p>
+                <p class="view-profile">
+                    <a :href="author.profileUrl" target="_blank" >
+                        <img :src="viewProfileImage" /> View profile
+                    </a>
+                </p>
+            </div>
+        </template>
+    </Popper>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import { Author } from '@/interfaces/Author'
 import viewProfileImage from '@/assets/images/view-profile.svg'
-const emit = defineEmits(['select-author'])
+import Popper from "vue3-popper";
 
 const props = defineProps<{
-  author: Author,
-  selectedAuthor: null | number
+  author: Author
 }>()
 
 const totalAffiliations = computed(() => props.author.affiliations.length || 0)
 const initialsOfFullname = computed(() => getInitials(props.author.fullName))
-const showModal = ref<boolean>(false)
 const showInitials = ref<boolean>(false)
-
-watch(() => props.selectedAuthor, () => { 
-    if (props.selectedAuthor !== props.author.id) {
-        showModal.value = false
-    }
-})
-
-const openModal = () => {
-    showModal.value = !showModal.value
-    const selectAuthor = showModal.value ? props.author.id : null
-    emit('select-author', selectAuthor)
-}
 
 const getInitials = (fullName: String) => {
     const names = fullName.split(' ')
@@ -84,6 +71,7 @@ const getInitials = (fullName: String) => {
 .name {
     text-decoration: underline;
     cursor: pointer;
+    padding-right: .3rem;
 }
 .position-relative {
     display: inline;
@@ -99,11 +87,6 @@ const getInitials = (fullName: String) => {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);   
     position: fixed;
     z-index: 1;
-
-    @media screen and (max-width: 30em) {
-        left: 50%;
-        transform: translate(-50%);
-    }
 
     .profile-img {
         position: absolute;

@@ -17,13 +17,10 @@ describe('Author', () => {
       profileUrl: 'https://example.com/johndoe',
       affiliations: []
     }
-
-    const selectedAuthor = null
     
     const wrapper = shallowMount(AuthorComponent, {
       props: {
-        author,
-        selectedAuthor
+        author
       }
     })
 

@@ -12,8 +12,6 @@
         >
           <Author 
             :author="author"
-            :selected-author="selectedAuthor"
-            @select-author="selectedAuthor = $event"
           />
           <span v-if="index !== totalAuthors - 1">
             {{ index === totalAuthors - 2 ? ' and ' : ',' }}
@@ -28,8 +26,6 @@
         <b>Editor: </b>
         <Author 
           :author="publication.editor"
-          :selected-author="selectedAuthor"
-          @select-author="selectedAuthor = $event"
         />
       </p>
 
@@ -40,8 +36,6 @@
         <b>Yourself: </b>
         <Author 
           :author="publication.yourself"
-          :selected-author="selectedAuthor"
-          @select-author="selectedAuthor = $event"
         />
       </p>
       <AffiliationComponent
@@ -65,7 +59,6 @@ const props = defineProps<{
 }>()
 
 const totalAuthors = computed(() => props.publication.authors ? props.publication.authors.length : 0)
-const selectedAuthor = ref<null | number>(null)
 
 const allAffiliations = computed<Affiliation[]>(() => {
   const editorsAffiliations = props.publication.editor?.affiliations || []
@@ -125,5 +118,6 @@ const removeDuplicated = (arr: Affiliation[]) => {
   font-weight: 300;
   padding: 0 .2rem;
   line-height: 2.2rem;
+  overflow: hidden;
 }
 </style>
