@@ -44,10 +44,8 @@
           @select-author="selectedAuthor = $event"
         />
       </p>
-
-      <Affiliation
-        v-if="publication.yourself"
-        :affiliations="publication.yourself.affiliations"
+      <AffiliationComponent
+        :affiliations="allAffiliations"
       />
 
       <h5>{{ publication.journal }} | {{ publication.section }}</h5>
@@ -58,8 +56,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { Publication } from '@/interfaces/Publication'
+import { Affiliation } from '@/interfaces/Affiliation'
 import Author from '@/components/Author.vue'
-import Affiliation from '@/components/Affiliation.vue'
+import AffiliationComponent from '@/components/Affiliation.vue'
 
 const props = defineProps<{
   publication: Publication
@@ -67,6 +66,22 @@ const props = defineProps<{
 
 const totalAuthors = computed(() => props.publication.authors ? props.publication.authors.length : 0)
 const selectedAuthor = ref<null | number>(null)
+
+const allAffiliations = computed<Affiliation[]>(() => {
+  const editorsAffiliations = props.publication.editor?.affiliations || []
+  const yourselfAffiliations = props.publication.yourself?.affiliations || []
+  const authorsAffiliations = props.publication.authors?.flatMap(author => author?.affiliations || []) || []
+  const allAffiliations = editorsAffiliations.concat(yourselfAffiliations, authorsAffiliations)
+
+  return removeDuplicated(allAffiliations)
+    .sort((a: Affiliation, b: Affiliation) => a.name.localeCompare(b.name));
+})
+
+const removeDuplicated = (arr: Affiliation[]) => {
+  return arr.filter((value, index, self) =>
+      index === self.findIndex(t => t.id === value.id)
+  )
+}
 
 </script>
 

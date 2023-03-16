@@ -3,7 +3,7 @@
         class="title"
         @click="toggleAffiliationsList"
     >
-        Affiliation 
+        Affiliations
         <img 
             class="arrow"
             :class="{ 'arrow-up' : showAffiliationsList }" :src="arrowImage" 
@@ -12,11 +12,12 @@
     <transition name="fade">
         <div v-if="showAffiliationsList">
             <ul 
-                v-for="(affil, index) in affiliations"
-                :key="affil.id"
                 class="affiliations-list"
             >
-                <li>
+                <li
+                    v-for="(affil, index) in affiliations"
+                    :key="affil.id"
+                >
                     <sup>{{ index + 1 }}</sup> {{ affil.name }}, {{ affil.city }}, {{ affil.country }}
                 </li>
             </ul>
@@ -65,6 +66,11 @@ const toggleAffiliationsList = () => {
         font-size: 1.5rem;
         line-height: 2rem;
         color: $grey;
+        margin-bottom: .4rem;
+
+        sup {
+            font-weight: bold;
+        }
     }
 }
 .arrow {
