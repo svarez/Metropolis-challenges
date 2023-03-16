@@ -73,12 +73,6 @@ const getInitials = (fullName: String) => {
     cursor: pointer;
     padding-right: .3rem;
 }
-.position-relative {
-    display: inline;
-    @media screen and (min-width: 30em) {
-        position: relative;
-    }
-}
 .box {
     background-color: $white;
     max-width: 65.9rem;

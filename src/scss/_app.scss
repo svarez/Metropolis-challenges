@@ -42,3 +42,11 @@ p {
     padding: 0.5rem 1rem;
     border-color: $dark-grey;
 }
+
+.popper {
+    @media screen and (max-width: 40em) {
+        position: absolute !important;
+        top: 50% !important;
+        transform: none !important;
+    }
+}
